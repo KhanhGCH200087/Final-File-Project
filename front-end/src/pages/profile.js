@@ -21,21 +21,21 @@ const Profile = () => {
             const response = await axios.get(apiUrl + "/marketingmanager/profile")
             _data = {
                 ...response.data.MMData,
-                image: 'data:image/png;base64, ' + response.data.MMData.image
+                // image: 'data:image/png;base64, ' + response.data.MMData.image
             }
         }
         if (user.role === USER_ROLE.MARKETING_COORDINATOR) {
             const response = await axios.get(apiUrl + "/marketingcoordinator/profile")
             _data = {
                 ...response.data.MCData,
-                image: 'data:image/png;base64, ' + response.data.MCData.image
+                // image: 'data:image/png;base64, ' + response.data.MCData.image
             }
         }
         if (user.role === USER_ROLE.GUEST) {
             const response = await axios.get(apiUrl + "/guest/profile")
             _data = {
                 ...response.data.GData,
-                image: 'data:image/png;base64, ' + response.data.GData.image
+                // image: 'data:image/png;base64, ' + response.data.GData.image
             }
         }
         setUserData(_data)
@@ -80,11 +80,13 @@ const Profile = () => {
 
         const reader = new FileReader();
         reader.addEventListener("load", function (evt) {
-            setUserData(prev => {
-                return {
-                    ...prev, image: evt.target.result,
-                };
-            });
+            const _userData = {
+                ...userData,
+                image: evt.target.result,
+            }
+            setUserData(_userData);
+
+            void editProfile(_userData)
         });
         reader.readAsDataURL(e.target.files[0]);
     }
@@ -189,10 +191,9 @@ const Profile = () => {
                    style={{display: "none"}}
                    onChange={(e) => {
                        readFile(e);
-
-                       const formData = new FormData()
-                       formData.append('image', e.target.files[0])
-                       editAvatar(formData)
+                       // const formData = new FormData()
+                       // formData.append('image', e.target.files[0])
+                       // editAvatar(formData)
                    }}
             />
             <button className={styles.edit_profile_btn} onClick={() => {

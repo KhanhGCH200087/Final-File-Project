@@ -15,7 +15,6 @@ const hbs = require('hbs');// Define Handlebars helper to format dates
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-
 //------------------------------------------------------------
 //3A. declare router (1 collection => 1 router )
 var facultyRouter = require('./routes/faculty');
@@ -32,6 +31,8 @@ var authRouter = require('./routes/auth'); // for login, logout
 
 var app = express();
 //---------------------------------------------------------------
+
+app.use(express.json({limit: '200mb'}));
 
 //set session timeout
 const timeout = 10000 * 60 * 60 * 24;  // 24 hours (in milliseconds), 60 minutes, 60 seconds
