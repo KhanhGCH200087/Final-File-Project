@@ -35,6 +35,9 @@ import Guest from './components/admin/Guest';
 import AddGuest from './components/admin/AddGuest';
 import UpdateGuest from './components/admin/UpdateGuest';
 import StudentPage from './components/student/Student';
+import StudentEvent from './components/student/Event';
+import StudentEventDetail from './components/student/EventDetail';
+import EditContribution from './components/student/EditContribution';
 
 function App() {
     return (
@@ -98,6 +101,9 @@ function App() {
 
                 <Route path='studentPage' element={<Layout/>}>
                     <Route index element={<StudentPage/>}/>
+                    <Route path='student-event' element={<StudentEvent/>}/>
+                    <Route path='event-detail/:id' element={<StudentEventDetail/>}/>
+                    <Route path='edit-contribution/:id' element={<EditContribution/>}/>
                 </Route>
 
                 <Route path='/login' element={

@@ -571,6 +571,7 @@ router.post('/submitContribution/:id', verifyToken, async (req, res) => {
 
             const STData = await StudentModel.findOne({user: userId});
             const facultyID = STData.faculty;
+            const stID = STData._id;
 
             if (facultyID.equals(eventFacultyID)) {
                 if (eventData) {
@@ -683,6 +684,7 @@ router.get('/eventDetail/:id', verifyToken, async (req, res) => {
     try{
         const userId = req.userId;
         const userData = await UserModel.findById(userId);
+        
         if(!userData){
             return res.status(400).json({success: false, error: "Not found user"});
         }
@@ -695,6 +697,7 @@ router.get('/eventDetail/:id', verifyToken, async (req, res) => {
     
             const STData = await StudentModel.findOne({user: userId});
             var facultyID = STData.faculty;
+            const stID = STData._id;
     
             if(facultyID.equals(eventFacultyID) ){
                 if (eventData){
@@ -806,7 +809,7 @@ router.delete('/deleteContribution/:id', verifyToken, async(req, res) => {
                     res.status(200).json({ success: true, message: "Contribution is deleted" });
                 }
             } else {
-                res.status(400).send("Deadline 1 for this event has passed. You cannot submit new documents.");
+                res.status(400).json("Deadline 1 for this event has passed. You cannot submit new documents.");
             }
             //----------------------------------
         } else {
