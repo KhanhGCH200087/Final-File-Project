@@ -1,21 +1,24 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { apiUrl } from "../contexts/constants";
+import { apiUrl } from "../../contexts/constants";
+import { Link, useNavigate } from "react-router-dom";
 
-const MCoordinatorAccountList = () => {
-    const [mcoordinator, setMcoordinator] = useState([]);
+const StudentAccountList = () => {
+    const [student, setStudent] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
-        const fetchAllMCoordinator = async () => {
+        const fetchAllStudent = async () => {
             try {
-                const res = await axios.get(`${apiUrl}/marketingcoordinator/`);
-                console.log(res.data);
-                setMcoordinator(res.data.data);
+                const res = await axios.get(`${apiUrl}/student/`);
+                console.log(res.data)
+                setStudent(res.data.data)
             } catch (err) {
                 console.log(err);
             }
         };
-        fetchAllMCoordinator();
+        fetchAllStudent();
     }, []);
+
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -43,24 +46,25 @@ const MCoordinatorAccountList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {mcoordinator.map((marketing_coordinator) => {
-                        return (
-                            <tr key={marketing_coordinator._id}>
-                                <td scope="row">{marketing_coordinator.name}</td>
-                                <td> {marketing_coordinator.user.email}</td>
-                                <td>{marketing_coordinator.faculty.name}</td>
-                                <td>
-                                    <button type="button" className="btn btn-outline-dark">
-                                        Detail
-                                    </button>
-                                </td>
-                            </tr>
-                        );
+                    {student.map((student) => {
+                        return <tr key={student._id}>
+                            <td scope="row">{student.name}</td>
+                            <td>
+                                {student.user.email}
+                            </td>
+                            <td>{student.faculty.name}</td>
+                            <td>
+                                <Link to={`/detailStudent/${student._id}`} type="button" className="btn btn-outline-dark" >
+                                    Detail
+                                </Link>
+                            </td>
+                        </tr>
                     })}
+
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 };
 
-export default MCoordinatorAccountList;
+export default StudentAccountList;

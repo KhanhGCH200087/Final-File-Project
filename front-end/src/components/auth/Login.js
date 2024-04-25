@@ -1,11 +1,14 @@
 import React, {useState, useContext} from "react";
 import {Navigate} from "react-router-dom";
-import {AuthContext} from "../contexts/AuthContext";
+import {AuthContext} from "../../contexts/AuthContext";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-import AlertMessage from "../layout/AlertMessage";
-import {USER_ROLE} from "../shared/contain";
+import AlertMessage from "../../layout/AlertMessage";
+import {USER_ROLE} from "../../shared/contain";
+import SideBarMarketingManager from "../sidebar/sidebar_marketing-manager";
+import SideBarMarketingCoordinator from "../sidebar/sidebar_marketing-coordinator";
+import SideBarGuest from "../sidebar/sidebar_guest";
 
 const Login = () => {
     const {
@@ -62,6 +65,8 @@ const Login = () => {
             return <Navigate to={"/marketing-manager"}/>
         } else if (user.role === USER_ROLE.MARKETING_COORDINATOR) {
             return <Navigate to={"/marketing-coordinator"}/>
+        } else if (user.role === USER_ROLE.STUDENT) {
+            return <Navigate to={"/studentPage"}/>
         } else if (user.role === USER_ROLE.GUEST) {
             return <Navigate to={"/guest"}/>
         }

@@ -1,20 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { apiUrl } from "../contexts/constants";
+import { apiUrl } from "../../contexts/constants";
+import { Link } from "react-router-dom";
 
-const MManagerAccountList = () => {
-    const [mmanager, setMManager] = useState([]);
+const MCoordinatorAccountList = () => {
+    const [mcoordinator, setMcoordinator] = useState([]);
     useEffect(() => {
-        const fetchAllMManager = async () => {
+        const fetchAllMCoordinator = async () => {
             try {
-                const res = await axios.get(`${apiUrl}/marketingmanager/`);
+                const res = await axios.get(`${apiUrl}/marketingcoordinator/`);
                 console.log(res.data);
-                setMManager(res.data.data);
+                setMcoordinator(res.data.data);
             } catch (err) {
                 console.log(err);
             }
         };
-        fetchAllMManager();
+        fetchAllMCoordinator();
     }, []);
     return (
         <div className="container">
@@ -38,19 +39,23 @@ const MManagerAccountList = () => {
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Faculty</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {mmanager.map((marketing_manager) => {
+                    {mcoordinator.map((marketing_coordinator) => {
                         return (
-                            <tr key={marketing_manager._id}>
-                                <td scope="row">{marketing_manager.name}</td>
-                                <td> {marketing_manager.user.email}</td>
+                            <tr key={marketing_coordinator._id}>
+                                <td scope="row">{marketing_coordinator.name}</td>
                                 <td>
-                                    <button type="button" className="btn btn-outline-dark">
+                                     {/* {marketing_coordinator.user.email} */}
+                                </td>
+                                <td>{marketing_coordinator.faculty.name}</td>
+                                <td>
+                                    <Link to={`/detailMCoordinator/${marketing_coordinator._id}`} type="button" className="btn btn-outline-dark">
                                         Detail
-                                    </button>
+                                    </Link>
                                 </td>
                             </tr>
                         );
@@ -61,4 +66,4 @@ const MManagerAccountList = () => {
     );
 };
 
-export default MManagerAccountList;
+export default MCoordinatorAccountList;

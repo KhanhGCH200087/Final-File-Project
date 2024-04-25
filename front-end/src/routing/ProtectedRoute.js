@@ -3,7 +3,7 @@ import {useContext} from "react";
 import {AuthContext} from "../contexts/AuthContext";
 import Spinner from "react-bootstrap/Spinner";
 import Nav from "../layout/Nav";
-import Footer from "../components/Footer";
+import Footer from "../layout/Footer";
 
 const ProtectedRoute = () => {
     const {

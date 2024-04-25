@@ -8,6 +8,7 @@ import SideBarGuest from "../sidebar/sidebar_guest";
 import {useContext} from "react";
 import {AuthContext} from "../../contexts/AuthContext";
 import {apiUrl, LOCAL_URL} from "../../contexts/constants";
+import SideBarStudent from "../sidebar/sidebar_student";
 
 const Layout = () => {
     const {
@@ -26,6 +27,8 @@ const Layout = () => {
                 return <SideBarMarketingCoordinator/>;
             } else if (user.role === USER_ROLE.GUEST) {
                 return <SideBarGuest/>;
+            } else if (user.role === USER_ROLE.STUDENT) {
+                return <SideBarStudent/>;
             }
         }
     };
