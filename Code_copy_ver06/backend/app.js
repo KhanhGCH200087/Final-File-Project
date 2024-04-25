@@ -72,7 +72,9 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+    exposedHeaders: ['Content-Disposition']
+}));
 
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
