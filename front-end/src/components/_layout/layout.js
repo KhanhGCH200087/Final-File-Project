@@ -16,7 +16,6 @@ const Layout = () => {
     } = useContext(AuthContext);
 
     const checkRole = () => {
-        console.log(user);
         if (!user) {
             // redirect ra man login
             //window.location.href = `${LOCAL_URL}/login`;

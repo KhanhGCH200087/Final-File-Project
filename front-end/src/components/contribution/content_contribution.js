@@ -12,7 +12,6 @@ const ContentContribution = () => {
 
     const getAllEventDetails = async () => {
         const response = await axios.get(`${apiUrl}/marketingmanager/eventDetail/${id}`)
-        console.log(response.data);
         setData(response.data);
     };
 

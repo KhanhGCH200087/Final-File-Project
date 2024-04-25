@@ -4,8 +4,9 @@ import {useParams} from "react-router-dom";
 import {formatDate} from "../../utils/common";
 import axios from "axios";
 import {apiUrl} from "../../contexts/constants";
-import {saveAs} from 'file-saver'
 
+import {saveAs} from 'file-saver'
+import {FILE_TYPE} from "../../shared/contain";
 
 const ContentContributionDetail = () => {
     const params = useParams()
@@ -18,10 +19,9 @@ const ContentContributionDetail = () => {
     }
 
     async function downloadFile() {
-        const response = await axios.get(`${apiUrl}/marketingmanager/download/${params.id}`,
-            {
-                responseType: 'arraybuffer'
-            })
+        const response = await axios.get(`${apiUrl}/marketingmanager/download/${params.id}`)
+        // setData(_data.data)
+        console.log(response.headers)
 
         let fileName = 'download.zip'
         if (response) {

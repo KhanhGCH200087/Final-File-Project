@@ -58,6 +58,7 @@ tbody > .table_rows > td {
 
 .th_table_contribution {
     width: 15%;
+    text-align: center;
 }
 
 .btn_download {
@@ -69,6 +70,7 @@ tbody > .table_rows > td {
     outline: none;
     cursor: pointer;
     border-radius: 10px;
+    width: 8%;
     height: 40px;
 }
 

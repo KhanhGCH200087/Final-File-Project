@@ -47,6 +47,11 @@ function App() {
                         <Footer/>
                     </div>
                 }/>
+
+                <Route element={<Layout/>}>
+                    <Route path="profile" element={<Profile/>}/>
+                </Route>
+
                 <Route element={<ProtectedRoute/>}>
                     <Route path='/student' element={<Student/>}/>
                     <Route path='/addStudent' element={<AddStudent/>}/>
@@ -57,7 +62,7 @@ function App() {
                     <Route path='/facultyList' element={<Faculty/>}/>
                     <Route path='/addFaculty' element={<AddFaculty/>}/>
                     <Route path='/updateFaculty/:id' element={<UpdateFaculty/>}/>
-                    <Route path='/profile' element={<PersonalProfile/>}/>
+                    <Route path='/profileAdmin' element={<PersonalProfile/>}/>
                     <Route path='/mcoordinator' element={<MCoordinator/>}/>
                     <Route path='/addMCoordinator' element={<AddMCoordinator/>}/>
                     <Route path='/detailMCoordinator/:id' element={<MCoordinatorDetail/>}/>
@@ -76,7 +81,6 @@ function App() {
                     />
                     <Route path="faculty" element={<FacultyPage/>}/>
                     <Route path="faculty-detail/:id" element={<FacultyDetailPage/>}/>
-                    <Route path="profile" element={<Profile/>}/>
                 </Route>
 
                 <Route path="marketing-coordinator"
