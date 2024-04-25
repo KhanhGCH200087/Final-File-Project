@@ -275,7 +275,7 @@ router.put('/edit/:id', verifyToken, async (req, res) => {
             marketingcoordinator.address = req.body.address;
             marketingcoordinator.faculty = req.body.faculty;
             marketingcoordinator.image = req.body.image;
-            
+
             const editMC = await marketingcoordinator.save();
             if (editMC) {
                 res.status(200).json({success: true, message: "Marketing Coordinator updated successfully"});
@@ -666,7 +666,7 @@ router.put('/contributionDetail/:id', verifyToken, async (req, res) => {
                     await contribution.save();
                     res.status(200).json({success: true, message: "Comment and Choose successfully"});
                 } else {
-                    res.status(400).send("Cannot comment because out of date");
+                    res.status(400).json({success: false, message: "Cannot comment because out of date"});
                 }
 
             } else {
@@ -754,7 +754,7 @@ router.get('/download/:id', verifyToken, async (req, res) => {
                         res.setHeader('Content-Type', 'application/zip');
                         res.setHeader('Content-Disposition', 'attachment; filename="student_${studentName}_image.zip"');
                         archive.pipe(res);
-                        archive.append(buffer, { name: '${studentName}_image.jpg '}); // You can adjust the filename here if needed
+                        archive.append(buffer, {name: '${studentName}_image.jpg '}); // You can adjust the filename here if needed
                         archive.finalize();
                     }
                 } else {

@@ -1,25 +1,24 @@
-import styles from "./content_contribution.module.css";
+import styles from "./../contribution/content_contribution.module.css";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {formatDate} from "../../utils/common";
 import axios from "axios";
 import {apiUrl} from "../../contexts/constants";
-
 import {saveAs} from 'file-saver'
 import {FILE_TYPE} from "../../shared/contain";
 
-const ContentContributionDetail = () => {
+const GuestContentContributionDetail = () => {
     const params = useParams()
     const [data, setData] = useState()
 
     async function getContributionDetail() {
-        const response = await axios.get(`${apiUrl}/marketingmanager/contributionDetail/${params.id}`)
+        const response = await axios.get(`${apiUrl}/guest/contributionDetail/${params.id}`)
         setData(response.data)
         console.log(response.data)
     }
 
     async function downloadFile() {
-        const response = await axios.get(`${apiUrl}/marketingmanager/download/${params.id}`, {
+        const response = await axios.get(`${apiUrl}/guest/download/${params.id}`, {
             responseType: 'arraybuffer'
         })
         // setData(_data.data)
@@ -56,10 +55,10 @@ const ContentContributionDetail = () => {
                         <th className={styles.th_table_contribution}>Student's name</th>
                         <td>{data && data.data.student ? data.data.student.name : <></>}</td>
                     </tr>
-                    <tr className={styles.table_rows}>
-                        <th className={styles.th_table_contribution}>Faculty</th>
-                        <td>{data && data.faculty.faculty.name ? data.faculty.faculty.name : <></>}</td>
-                    </tr>
+                    {/*<tr className={styles.table_rows}>*/}
+                    {/*    <th className={styles.th_table_contribution}>Faculty</th>*/}
+                    {/*    <td>{data && data.faculty.faculty.name ? data.faculty.faculty.name : <></>}</td>*/}
+                    {/*</tr>*/}
                     <tr className={styles.table_rows}>
                         <th className={styles.th_table_contribution}>Submission date</th>
                         <td>{data && formatDate(data.data.date)}</td>
@@ -84,4 +83,4 @@ const ContentContributionDetail = () => {
         </div>
     );
 };
-export default ContentContributionDetail;
+export default GuestContentContributionDetail;

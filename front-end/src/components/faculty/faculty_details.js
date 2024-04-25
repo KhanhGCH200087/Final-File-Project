@@ -51,7 +51,7 @@ const FacultyDetail = () => {
                         return (
                             <tr className={styles.table_rows} key={index}>
                                 <td>{index + 1}</td>
-                                <td><img src={item.image} alt=""/></td>
+                                <td><img src={"data:image/png;base64, " + item.image} alt=""/></td>
                                 <td>{item.name}</td>
                             </tr>
                         )

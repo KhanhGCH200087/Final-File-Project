@@ -16,8 +16,13 @@ const SubmissionDetails = () => {
     }
 
     async function saveContributionDetail() {
-        console.log(data)
-        const response = await axios.put(`${apiUrl}/marketingcoordinator/contributionDetail/${params.id}`, data)
+        try {
+            const response = await axios.put(`${apiUrl}/marketingcoordinator/contributionDetail/${params.id}`, data)
+            console.log(response)
+        } catch (c) {
+            alert(c.response.data.message)
+        }
+
     }
 
     async function downloadFile() {
