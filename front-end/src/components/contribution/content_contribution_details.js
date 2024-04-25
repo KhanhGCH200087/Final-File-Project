@@ -19,7 +19,9 @@ const ContentContributionDetail = () => {
     }
 
     async function downloadFile() {
-        const response = await axios.get(`${apiUrl}/marketingmanager/download/${params.id}`)
+        const response = await axios.get(`${apiUrl}/marketingmanager/download/${params.id}`, {
+            responseType: 'arraybuffer'
+        })
         // setData(_data.data)
         console.log(response.headers)
 
