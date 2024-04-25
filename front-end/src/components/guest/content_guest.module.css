@@ -9,9 +9,8 @@
 .img_artical {
     display: flex;
     width: 100%;
-    height: 212px;
+    height: 100%;
     border-bottom: 1px solid grey;
-    object-fit: cover;
 }
 
 .artical_name {
@@ -19,4 +18,14 @@
     font-style: italic;
     font-weight: bold;
     padding: 10px;
+}
+
+.list_artical {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    height: 100%;
+    gap: 20px;
+    overflow: auto;
+    justify-content: space-around;
 }

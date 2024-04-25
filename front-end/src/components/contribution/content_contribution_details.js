@@ -4,27 +4,45 @@ import {useParams} from "react-router-dom";
 import {formatDate} from "../../utils/common";
 import axios from "axios";
 import {apiUrl} from "../../contexts/constants";
+import {saveAs} from 'file-saver'
+
 
 const ContentContributionDetail = () => {
-    const id = useParams()
+    const params = useParams()
     const [data, setData] = useState()
 
     async function getContributionDetail() {
-        const response = await axios.get(`${apiUrl}/marketingmanager/contributionDetail/${id.id}`)
-
+        const response = await axios.get(`${apiUrl}/marketingmanager/contributionDetail/${params.id}`)
         setData(response.data)
-        console.log(response.data);
+        console.log(response.data)
     }
 
-    async function DownloadFile() {
-        const _data = await axios.get(`${apiUrl}/marketingmanager/download/${id}`)
-        setData(_data.data)
-        console.log(_data.data)
+    async function downloadFile() {
+        const response = await axios.get(`${apiUrl}/marketingmanager/download/${params.id}`,
+            {
+                responseType: 'arraybuffer'
+            })
+
+        let fileName = 'download.zip'
+        if (response) {
+            const contentDisposition = response.request.getResponseHeader('Content-Disposition')
+            console.log(contentDisposition);
+            fileName = contentDisposition.split(';')[1]
+                .replace("filename=", '')
+                .replaceAll('"', '')
+        }
+
+        let blob = new Blob([response.data], {
+            type: 'application/octet-stream'
+        })
+
+        saveAs(blob, fileName)
     }
+
 
     useEffect(() => {
         getContributionDetail();
-        DownloadFile();
+        // DownloadFile();
     }, []);
 
     return (
@@ -48,8 +66,10 @@ const ContentContributionDetail = () => {
                         <th className={styles.th_table_contribution}>File submission</th>
                         <td>
                             <div className={styles.td_filesubmission}>
-                                <p className={styles.file_name}>File submission</p>
-                                <button className={styles.btn_download}>Download</button>
+                                <button className={styles.btn_download} onClick={() => {
+                                    downloadFile()
+                                }}>Download
+                                </button>
                             </div>
                         </td>
                     </tr>

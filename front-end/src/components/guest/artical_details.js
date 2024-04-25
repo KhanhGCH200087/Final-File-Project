@@ -1,33 +1,38 @@
-import styles from "./artical_details.module.css"
+import styles from "../contribution/content_contribution.module.css"
 
 const ContentArticalDetail = () => {
     return (
-        <div className={styles.container_submission_detail}>
-            <h1 className={styles.title}> Artical's detail</h1>
-            <table className={styles.table_submission_list}>
-                <tr className={`${styles.table_rows}`}>
-                    <th>Student's name</th>
-                    <td>Paul Pham</td>
-                </tr>
-                <tr className={styles.table_rows}>
-                    <th className={styles.th_table_contribution}>Email</th>
-                    <td>abc@gmail.com</td>
-                </tr>
-                <tr className={styles.table_rows}>
-                    <th className={styles.th_table_contribution}>Faculty</th>
-                    <td>abc@gmail.com</td>
-                </tr>
-                <tr className={styles.table_rows}>
-                    <th className={styles.th_table_contribution}>File submission</th>
-                    <td>
-                        <div className={styles.td_filesubmission}>
-                            <p className={styles.file_name}>File submission</p>
-                            <button className={styles.btn_download}>Dowload</button>
-                        </div>
-                    </td>
-                </tr>
-
-            </table>
+        <div>
+            <h1 className={styles.title}> Submission's detail</h1>
+            <div className={styles.table_submissionDetail}>
+                <table className={styles.table_contribution_list}>
+                    <tr className={`${styles.table_rows}`}>
+                        <th className={styles.th_table_contribution}>Student's name</th>
+                        <td></td>
+                    </tr>
+                    <tr className={styles.table_rows}>
+                        <th className={styles.th_table_contribution}>Email</th>
+                        <td></td>
+                    </tr>
+                    <tr className={styles.table_rows}>
+                        <th className={styles.th_table_contribution}>Faculty</th>
+                        <td></td>
+                    </tr>
+                    <tr className={styles.table_rows}>
+                        <th className={styles.th_table_contribution}>Submission Date</th>
+                        <td></td>
+                    </tr>
+                    <tr className={styles.table_rows}>
+                        <th className={styles.th_table_contribution}>File submission</th>
+                        <td>
+                            <div className={styles.td_filesubmission}>
+                                <span className={styles.file_name}>student_word.docx</span>
+                                <button className={styles.btn_download}>Download</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     )
 }

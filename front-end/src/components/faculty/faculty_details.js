@@ -13,7 +13,7 @@ const FacultyDetail = () => {
     const getAllFacultyDetail = async () => {
         const response = await axios.get(`${apiUrl}/marketingmanager/facultyDetail/${id}`)
         setData(response.data);
-        // console.log(response)
+        console.log(response)
     };
 
     useEffect(() => {

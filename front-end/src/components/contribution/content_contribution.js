@@ -53,7 +53,7 @@ const ContentContribution = () => {
                         {
                             data ? data.chosenYesContributions.map((item, index) => {
                                 if (item.choosen === "Yes") {
-                                    console.log(item.student)
+
                                     return (
                                         <tr className={styles.table_rows}>
                                             <td>{item.student ? item.student.name : <></>}</td>
@@ -62,7 +62,7 @@ const ContentContribution = () => {
                                                 {
                                                     item.student && item.student._id ?
                                                         <Link
-                                                            to={`/marketing-manager/contributionDetail/${item._id}`}>
+                                                            to={`/marketing-manager/contributionDetail/${item._id}/`}>
                                                             <button className={styles.btn}>View</button>
                                                         </Link>
                                                         : <></>

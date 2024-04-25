@@ -4,3 +4,8 @@ export const USER_ROLE = {
     MARKETING_COORDINATOR: "65e61d9bb8171b6e90f92da5",
     ADMIN: "65e61d9bb8171b6e90f92da3"
 }
+
+export const FILE_TYPE = {
+    DOC: 'word',
+    IMAGE: 'image'
+}

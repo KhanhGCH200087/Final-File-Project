@@ -31,13 +31,13 @@ const Profile = () => {
                 image: 'data:image/png;base64, ' + response.data.MCData.image
             }
         }
-        // if (user.role === USER_ROLE.MARKETING_MANAGER) {
-        //     const response = await axios.get(apiUrl + "/marketingmanager/profile")
-        //     _data = {
-        //         ...response.data.MMData,
-        //         image: 'data:image/png;base64, ' + response.data.MMData.image
-        //     }
-        // }
+        if (user.role === USER_ROLE.GUEST) {
+            const response = await axios.get(apiUrl + "/guest/profile")
+            _data = {
+                ...response.data.GData,
+                image: 'data:image/png;base64, ' + response.data.GData.image
+            }
+        }
         setUserData(_data)
     }
 
@@ -48,6 +48,9 @@ const Profile = () => {
             }
             if (user.role === USER_ROLE.MARKETING_COORDINATOR) {
                 return await axios.put(apiUrl + `/marketingcoordinator/editMC/${userData._id}`, data)
+            }
+            if (user.role === USER_ROLE.GUEST) {
+                return await axios.post(apiUrl + `/guest/editG/${userData._id}`, data)
             }
         } catch (e) {
             console.log(e);
@@ -61,6 +64,9 @@ const Profile = () => {
             }
             if (user.role === USER_ROLE.MARKETING_COORDINATOR) {
                 return await axios.put(apiUrl + `/marketingcoordinator/editMC/${userData._id}`, formData)
+            }
+            if (user.role === USER_ROLE.GUEST) {
+                return await axios.post(apiUrl + `/guest/editG/${userData._id}`, formData)
             }
         } catch (e) {
             console.log(e);
