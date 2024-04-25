@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {apiUrl} from "../contexts/constants";
+import {Link, useNavigate} from "react-router-dom";
+import {apiUrl} from "../../contexts/constants";
 
 const Faculty = () => {
     const [faculty, setFaculty] = useState([]);
@@ -19,9 +19,21 @@ const Faculty = () => {
         fetchAllFaculty();
     }, []);
 
+
+    const handleDelete = async (id) => {
+        try {
+            if(window.confirm("Are you sure delete this?")){
+                const res = await axios.delete(`${apiUrl}/faculty/delete/`+id)
+                window.location.reload()
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const navigate = useNavigate();
     const addButton = () => {
-        navigate("/add");
+        navigate('/addFaculty');
     };
     return (
         <div className="heading">
@@ -43,7 +55,7 @@ const Faculty = () => {
                                 placeholder="Search"
                                 aria-label="Search"
                             />
-                            <button className="btn btn-outline-success" type="submit">
+                            <button className="btn btn-outline-success">
                                 Search
                             </button>
                         </form>
@@ -64,10 +76,10 @@ const Faculty = () => {
                                 <td>{faculty.name}</td>
                                 <td>{faculty.description}</td>
                                 <td>
-                                    <button type="button" className="btn btn-warning">
+                                    <Link to={`/updateFaculty/${faculty._id}`} type="button" className="btn btn-warning" onClick={""}>
                                         Edit
-                                    </button>
-                                    <button type="button" className="btn btn-danger">
+                                    </Link>
+                                    <button type="button" className="btn btn-danger" onClick={() => handleDelete(faculty._id)}>
                                         Delete
                                     </button>
                                 </td>

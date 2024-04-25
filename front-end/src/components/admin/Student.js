@@ -5,7 +5,7 @@ import StudentAccountList from "./StudentAccountList";
 const Student = () => {
     const navigate = useNavigate()
     const addButton = () => {
-        navigate('/add')
+        navigate('/addStudent')
     }
     return (
         <div className="heading">

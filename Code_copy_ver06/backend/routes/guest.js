@@ -45,7 +45,7 @@ router.get('/', verifyToken, async(req, res) => {
         const userRole = userData.role.toString();
         if(userRole === '65e61d9bb8171b6e90f92da3'){
             //Code ở đây--------------------------
-            var guestList = await GuestModel.find({}).populate('user');
+            var guestList = await GuestModel.find({}).populate('user').populate('faculty');
             //render view and pass data
             res.status(200).json({ success: true, data: guestList });
             //----------------------------------
@@ -141,6 +141,7 @@ router.post('/add', verifyToken, async (req, res) => {
             const dob = req.body.dob;
             const gender = req.body.gender;
             const address = req.body.address;
+            const faculty = req.body.faculty;
             const image = req.body.image 
     
             const email = req.body.email;
@@ -166,6 +167,7 @@ router.post('/add', verifyToken, async (req, res) => {
                     dob: dob,
                     gender: gender,
                     address: address,
+                    faculty: faculty,
                     image: image,
                     user: users
                     }
@@ -209,7 +211,7 @@ router.get('/edit/:id', verifyToken, async (req, res) => {
         if(userRole === '65e61d9bb8171b6e90f92da3'){
             //Code ở đây--------------------------
             const guestId = req.params.id;
-            const guest = await GuestModel.findById(guestId);
+            const guest = await GuestModel.findById(guestId).populate('faculty');
             if (!guest) {
                 res.status(404).json({ success: false, error: "Guest not found" });
                 return;

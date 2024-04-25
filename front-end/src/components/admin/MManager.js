@@ -1,15 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import MCoordinatorAccountList from "./MCoordinatorAccountList";
+import {useNavigate} from "react-router-dom";
+import MManagerAccountList from "./MManagerAccountList";
 
-const MCoordinator = () => {
+const MManager = () => {
     const navigate = useNavigate();
     const addButton = () => {
-        navigate("/add");
+        navigate("/addMManager");
     };
     return (
         <div className="heading">
-            <h1>Marketing Coordinator</h1>
+            <h1>Makerting Manager</h1>
             <button
                 className="btn appButton btn-info"
                 type="button"
@@ -17,9 +17,9 @@ const MCoordinator = () => {
             >
                 Add
             </button>
-            <MCoordinatorAccountList />
+            <MManagerAccountList/>
         </div>
     );
 };
 
-export default MCoordinator;
+export default MManager;

@@ -47,13 +47,14 @@
 .nav-ul {
     padding: 30px;
     margin: 0px;
-    background-color: skyblue;
+    background-color: #1a5d9c;
 }
 
 .footer {
-    position: fixed;
+    height: 50px;
+    position: sticky;
     bottom: 0;
-    background-color: skyblue;
+    background-color: #1a5d9c;
     width: 100%;
     text-align: center;
     /*margin-top: 50lvh;*/
@@ -116,6 +117,7 @@
 }
 
 .logo {
+    background-color: white;
     width: 200px;
     float: left;
 }
@@ -145,6 +147,14 @@
     background-color: #e8e8e8;
 }
 
+.profile-background-ul {
+    text-align: left;
+}
+
+.profile-background-ul li {
+    padding: 10px;
+    margin-left: 100px;
+}
 .margin-top {
     margin-top: 50px;
 }

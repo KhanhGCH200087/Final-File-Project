@@ -23,24 +23,24 @@ const EventDetails = () => {
                     <table className={styles.table_submission_list}>
                         <thead>
                         <tr className={styles.table_rows}>
-                            <th className={styles.title_table_1}>Student's Name</th>
-                            <th className={styles.title_table_1}>Email</th>
-                            <th className={styles.title_table_1}>Title</th>
-                            <th className={styles.title_table_1}>Date</th>
-                            <th className={styles.title_table_1}>Action</th>
+                            <th>Student's Name</th>
+                            <th>Email</th>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr className={styles.table_rows}>
-                            <td>Paul Pham</td>
-                            <td>phamkhue98@gmail.com</td>
-                            <td>IT</td>
-                            <td>05/04/2024</td>
-                            <td>
+                            <th>Paul Pham</th>
+                            <th>phamkhue98@gmail.com</th>
+                            <th>IT</th>
+                            <th>05/04/2024</th>
+                            <th>
                                 <Link to={"/marketing-coordinator/submissionDetail/1"}>
                                     <button className={styles.btn}>View</button>
                                 </Link>
-                            </td>
+                            </th>
                         </tr>
                         </tbody>
                     </table>
