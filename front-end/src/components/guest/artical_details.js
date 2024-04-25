@@ -1,6 +1,23 @@
 import styles from "../contribution/content_contribution.module.css"
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {apiUrl} from "../../contexts/constants";
 
 const ContentArticalDetail = () => {
+    const params = useParams()
+    const [data, setData] = useState()
+
+    async function getArticalDetail() {
+        const response = await axios.get(`${apiUrl}/guest/contributionDetail/${params._id}`)
+        setData(response.data)
+        console.log(response.data)
+    }
+
+    useEffect(() => {
+        getArticalDetail()
+    }, []);
+
     return (
         <div>
             <h1 className={styles.title}> Submission's detail</h1>

@@ -22,6 +22,8 @@ import EventDetails from "./pages/event_details";
 import SubmissionDetails from "./pages/submission_detail";
 import HomePageGuest from "./pages/home_guest";
 import ArticalDetail from "./pages/artical_detail";
+import GuestEventDetails from "./pages/guest_event";
+import GuestContribution from "./pages/guest_submission"
 
 import './App.css'
 import AddMCoordinator from './components/admin/AddMCoordinator';
@@ -93,7 +95,9 @@ function App() {
 
                 <Route path="guest" element={<Layout/>}>
                     <Route index element={<HomePageGuest/>}/>
+                    <Route path="guestEventDetail/:id" element={<GuestEventDetails/>}/>
                     <Route path="articalDetail/:id" element={<ArticalDetail/>}/>
+                    <Route path="contriButionDetail/:id" element={<GuestContribution/>}/>
                 </Route>
 
                 <Route path='studentPage' element={<Layout/>}>

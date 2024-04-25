@@ -365,7 +365,7 @@ router.get('/eventDetail/:id', verifyToken, async (req, res) => {
             if (facultyID.equals(eventFacultyID)) {
                 if (eventData) {
                     const contributionList = await ContributionModel.find({event: eventId}).populate('student');
-                    const chosenYesContributions = await contributionList.filter(contribution => contribution.choosen === true);
+                    const chosenYesContributions = await contributionList.filter(contribution => contribution.choosen === "Yes");
                     if (chosenYesContributions) {
                         res.status(200).json({success: true, eventData, chosenYesContributions, GData});
                     } else {
@@ -586,7 +586,7 @@ router.get('/download/:id', verifyToken, async (req, res) => {
             return res.status(400).json({success: false, error: "Not found user"});
         }
         const userRole = userData.role.toString();
-        if (userRole === '65e61d9bb8171b6e90f92da4') {
+        if (userRole === '65e61d9bb8171b6e90f92da7') {
             //Code ở đây--------------------------
             const contributionId = req.params.id;
             const contributionData = await ContributionModel.findById(contributionId);
