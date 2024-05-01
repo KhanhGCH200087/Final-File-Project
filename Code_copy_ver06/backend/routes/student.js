@@ -615,8 +615,8 @@ router.post('/submitContribution/:id', verifyToken, async (req, res) => {
                         const transporter = nodemailer.createTransport({
                             service: 'gmail',
                             auth: {
-                                user: 'projectsystemcomp1640@gmail.com',
-                                pass: 'comp1640'
+                                user: process.env.EMAIL_GMAIL,
+                                pass: process.env.PASSWORD_GMAIL
                             }
                         });
 
@@ -781,8 +781,8 @@ router.delete('/deleteContribution/:id', verifyToken, async(req, res) => {
                                 const transporter = nodemailer.createTransport({
                                     service: 'gmail',
                                     auth: {
-                                        user: 'projectsystemcomp1640@gmail.com', 
-                                        pass: 'comp1640' 
+                                        user: process.env.EMAIL_GMAIL,
+                                        pass: process.env.PASSWORD_GMAIL
                                     }
                                 });
                                 const mailOptions = {
@@ -944,8 +944,8 @@ router.put('/editContribution/:id', verifyToken, async(req, res) => {
                                     const transporter = nodemailer.createTransport({
                                         service: 'gmail',
                                         auth: {
-                                            user: 'projectsystemcomp1640@gmail.com', // Your Gmail email address
-                                            pass: 'comp1640' // Your Gmail password
+                                            user: process.env.EMAIL_GMAIL,
+                                            pass: process.env.PASSWORD_GMAIL
                                         }
                                     });
 
