@@ -1,4 +1,4 @@
-export const apiUrl = 'https://comp1640-ih81.onrender.com/'
+export const apiUrl = 'http://localhost:4000'
 
 export const LOCAL_URL = 'http://localhost:3000'
 

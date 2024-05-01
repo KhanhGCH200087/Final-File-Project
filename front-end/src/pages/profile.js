@@ -179,11 +179,12 @@ const Profile = () => {
             </table>
         </div>
         <div className={styles.sidebar_profile}>
-            <img
+            {userData ? <img
                 className={styles.avatar_profile}
-                src={userData ? userData.image : ""}
+                src={userData.image}
                 alt=""
-            />
+            /> : <></>}
+
             <input type="file"
                    id="myfile"
                    name="myfile"

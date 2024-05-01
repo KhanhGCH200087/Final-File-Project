@@ -17,8 +17,6 @@ const Layout = () => {
 
     const checkRole = () => {
         if (!user) {
-            // redirect ra man login
-            //window.location.href = `${LOCAL_URL}/login`;
         } else {
             if (user.role === USER_ROLE.MARKETING_MANAGER) {
                 return <SideBarMarketingManager/>;
