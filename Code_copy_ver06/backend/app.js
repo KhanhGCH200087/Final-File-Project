@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 require('dotenv').config()
 const cors = require('cors')
 
@@ -117,6 +118,26 @@ app.use('/guest', guestRouter);
 app.use('/auth', authRouter);
 
 //----------------------------------------------------------------------------
+
+
+// Deployment routes
+
+const __dirname1 = path.resolve();
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname1, '/front-end/build')));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname1, 'front-end', 'build', 'index.html'));
+    });
+} else {
+    app.get('/', (req, res) => {
+        res.send("API is running success");
+    });
+}
+
+// Deployment routes
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
