@@ -40,13 +40,16 @@ import StudentPage from './components/student/Student';
 import StudentEvent from './components/student/Event';
 import StudentEventDetail from './components/student/EventDetail';
 import EditContribution from './components/student/EditContribution';
+import Event from './components/admin/Event';
+import AddEvent from './components/admin/AddEvent';
+import UpdateEvent from './components/admin/UpdateEvent';
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={
-                    <div className={'App'}>
+                    <div className='App'>
                         <Nav/>
                         <h1>Home</h1>
                         <Footer/>
@@ -74,6 +77,9 @@ function App() {
                     <Route path='/guestAccount' element={<Guest/>}/>
                     <Route path='/addGuest' element={<AddGuest/>}/>
                     <Route path='/updateGuest/:id' element={<UpdateGuest/>}/>
+                    <Route path='/eventList' element={<Event/>}/>
+                    <Route path='/addEvent' element={<AddEvent/>}/>
+                    <Route path='/updateEvent/:id' element={<UpdateEvent/>}/>
                 </Route>
 
                 <Route path="marketing-manager"

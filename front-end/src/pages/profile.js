@@ -82,7 +82,7 @@ const Profile = () => {
         reader.addEventListener("load", function (evt) {
             const _userData = {
                 ...userData,
-                image: evt.target.result,
+                image: evt.target.result.split(',')[1],
             }
             setUserData(_userData);
 
@@ -181,7 +181,7 @@ const Profile = () => {
         <div className={styles.sidebar_profile}>
             {userData ? <img
                 className={styles.avatar_profile}
-                src={userData.image}
+                src={`data:image/jpeg;base64,${userData.image}`}
                 alt=""
             /> : <></>}
 

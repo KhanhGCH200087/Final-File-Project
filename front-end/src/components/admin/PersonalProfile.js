@@ -10,7 +10,7 @@ const PersonalProfile = () => {
         const fetchAdmin = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/admin/`);
-                console.log(res.data)
+                // console.log(res.data)
                 setAdmin(res.data.data)
             } catch (err) {
                 console.log(err);
@@ -26,7 +26,7 @@ const PersonalProfile = () => {
                     {admin.map((admin) => {
                         return <ul type="none" className="profile-background-ul" key={admin._id}>
                             <li>Name: {admin.name}</li>
-                            <li>Dob: {admin.dob}</li>
+                            <li>Date of birth: {admin.dob.split('T')[0]}</li>
                             <li>Email: {admin.user.email}</li>
                             <li>Address: {admin.address}</li>
                             <li>Gender: {admin.gender}</li>

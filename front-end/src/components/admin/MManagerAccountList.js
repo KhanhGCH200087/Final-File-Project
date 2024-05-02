@@ -9,7 +9,6 @@ const MManagerAccountList = () => {
         const fetchAllMManager = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/marketingmanager/`);
-                console.log(res.data);
                 setMManager(res.data.data);
             } catch (err) {
                 console.log(err);
@@ -48,7 +47,7 @@ const MManagerAccountList = () => {
                             <tr key={marketing_manager._id}>
                                 <td scope="row">{marketing_manager.name}</td>
                                 <td>
-                                     {/* {marketing_manager.user.email} */}
+                                     {marketing_manager.user.email}
                                 </td>
                                 <td>
                                     <Link to={`/detailMManager/${marketing_manager._id}`} type="button" className="btn btn-outline-dark">

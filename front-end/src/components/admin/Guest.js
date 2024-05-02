@@ -10,7 +10,6 @@ const Guest = () => {
         const fetchAllGuest = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/guest/`);
-                console.log(res.data);
                 setGuest(res.data.data);
             } catch (err) {
                 console.log(err);

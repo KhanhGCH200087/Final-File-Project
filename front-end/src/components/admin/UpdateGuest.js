@@ -18,7 +18,7 @@ const UpdateGuest = () => {
         const fetchStudent = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/guest/edit/`+id)
-                console.log(res)
+                // console.log(res)
                 setGuest(res.data.guest.faculty.name)
                 setImage(res.data.guest.image)
                 setValues({...values, email: res.data.user.email, name: res.data.guest.name, gender: res.data.guest.gender,
@@ -90,7 +90,7 @@ const UpdateGuest = () => {
         }
     }
     
-    console.log(values)
+    // console.log(values)
     return (
         <div className="container add">
             <h1>Student Detail</h1>

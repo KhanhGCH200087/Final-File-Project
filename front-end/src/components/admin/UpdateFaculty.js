@@ -14,7 +14,7 @@ const UpdateFaculty = () => {
         const fetchFaculty = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/faculty/edit/`+id)
-                console.log(res)
+                // console.log(res)
                 setFaculty({...faculty, name: res.data.data.name, description: res.data.data.description})
             } catch (error) {
                 console.log(error)

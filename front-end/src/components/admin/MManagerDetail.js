@@ -18,8 +18,6 @@ const MManagerDetail = () => {
         const fetchMManager = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/marketingmanager/edit/`+id)
-                console.log(res)
-                // setMManager(res.data.student.faculty.name)
                 setImage(res.data.marketingmanager.image)
                 setValues({...values, email: res.data.user.email, name: res.data.marketingmanager.name, gender: res.data.marketingmanager.gender,
                             address: res.data.marketingmanager.address, image: res.data.marketingmanager.image, dob: res.data.marketingmanager.dob})
@@ -87,7 +85,6 @@ const MManagerDetail = () => {
         }
     }
 
-    console.log(values)
     return (
         <div className="container add">
             <h1>Marketing Manager Detail</h1>

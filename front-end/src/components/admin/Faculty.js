@@ -10,7 +10,7 @@ const Faculty = () => {
         const fetchAllFaculty = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/faculty/`);
-                console.log(res.data);
+                // console.log(res.data);
                 setFaculty(res.data.data);
             } catch (err) {
                 console.log(err);
@@ -76,7 +76,7 @@ const Faculty = () => {
                                 <td>{faculty.name}</td>
                                 <td>{faculty.description}</td>
                                 <td>
-                                    <Link to={`/updateFaculty/${faculty._id}`} type="button" className="btn btn-warning" onClick={""}>
+                                    <Link to={`/updateFaculty/${faculty._id}`} type="button" className="btn btn-warning" >
                                         Edit
                                     </Link>
                                     <button type="button" className="btn btn-danger" onClick={() => handleDelete(faculty._id)}>

@@ -17,7 +17,6 @@ const MCoordinatorDetail = () => {
         const fetchStudent = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/marketingcoordinator/edit/` + id)
-                console.log(res)
                 setMcoordinator(res.data.marketingcoordinator.faculty.name)
                 setImage(res.data.marketingcoordinator.image)
                 setValues({
@@ -103,7 +102,6 @@ const MCoordinatorDetail = () => {
         }
     }
 
-    console.log(values)
     return (
         <div className="container add">
             <h1>Marketing Coordinator  Detail</h1>

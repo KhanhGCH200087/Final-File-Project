@@ -20,6 +20,7 @@ const Nav = () => {
                         <li><Link to="/mmanager">Makerting Manager</Link></li>
                         <li><Link to="/guestAccount">Guest</Link></li>
                         <li><Link to="/facultyList">Faculty</Link></li>
+                        <li><Link to="eventList">Event</Link></li>
                         <li><Link to="/profileAdmin">Profile</Link></li>
                         <li><i className="bi bi-chat-fill"></i></li>
                         <li style={{float: "right"}}>

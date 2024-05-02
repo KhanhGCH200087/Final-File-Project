@@ -49,7 +49,7 @@ const MCoordinatorAccountList = () => {
                             <tr key={marketing_coordinator._id}>
                                 <td scope="row">{marketing_coordinator.name}</td>
                                 <td>
-                                     {/* {marketing_coordinator.user.email} */}
+                                     {marketing_coordinator.user.email}
                                 </td>
                                 <td>{marketing_coordinator.faculty.name}</td>
                                 <td>

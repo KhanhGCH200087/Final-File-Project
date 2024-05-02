@@ -10,7 +10,6 @@ const StudentAccountList = () => {
         const fetchAllStudent = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/student/`);
-                console.log(res.data)
                 setStudent(res.data.data)
             } catch (err) {
                 console.log(err);

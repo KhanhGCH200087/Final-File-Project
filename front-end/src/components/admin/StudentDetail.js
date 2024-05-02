@@ -18,7 +18,6 @@ const StudentDetail = () => {
         const fetchStudent = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/student/edit/`+id)
-                console.log(res)
                 setStudent(res.data.student.faculty.name)
                 setImage(res.data.student.image)
                 setValues({...values, email: res.data.user.email, name: res.data.student.name, gender: res.data.student.gender,
@@ -66,11 +65,9 @@ const StudentDetail = () => {
     };
 
     function convertToBase64(e) {
-        console.log(e)
         const reader = new FileReader()
         reader.readAsDataURL(e.target.files[0])
         reader.onload = () => {
-            console.log(reader.result.base64)
             const base64result = reader.result.split(',')[1]
             setImage(base64result)
             values.image = base64result
@@ -84,7 +81,6 @@ const StudentDetail = () => {
         e.preventDefault();
         try {
             const res = await axios.put(`${apiUrl}/student/edit/`+id, values)
-            console.log(res)
             navigate('/student')
         } catch (error) {
             console.log(error)
@@ -102,7 +98,6 @@ const StudentDetail = () => {
         }
     }
 
-    console.log(values)
     return (
         <div className="container add">
             <h1>Student Detail</h1>
